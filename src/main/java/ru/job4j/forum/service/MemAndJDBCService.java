@@ -8,7 +8,7 @@ import ru.job4j.forum.repository.Store;
 
 import java.util.Collection;
 
-@Service
+/*@Service*/
 public class MemAndJDBCService implements ForumService {
 
     private Store store;

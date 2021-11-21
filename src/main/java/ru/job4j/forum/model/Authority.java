@@ -1,9 +1,14 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "authorities")
 public class Authority {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String authority;
 
@@ -51,4 +56,5 @@ public class Authority {
     public String toString() {
         return "Authority { " + "id=" + id + ", authority='" + authority + "' }";
     }
+
 }

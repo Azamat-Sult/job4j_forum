@@ -1,13 +1,21 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
     private User author;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date created = new Date(System.currentTimeMillis());
 
     public static Post of(int id, String text, User author) {

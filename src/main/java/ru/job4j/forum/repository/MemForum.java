@@ -8,7 +8,7 @@ import ru.job4j.forum.model.User;
 
 import java.util.*;
 
-@Repository
+/*@Repository*/
 public class MemForum implements Store {
 
     private Map<Integer, Topic> topics = new HashMap<>();

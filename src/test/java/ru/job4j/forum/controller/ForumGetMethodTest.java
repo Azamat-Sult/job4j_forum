@@ -25,7 +25,7 @@ class ForumGetMethodTest {
 
     @Test
     @WithMockUser
-    public void GetIndexPageTest() throws Exception {
+    public void getIndexPageTest() throws Exception {
         this.mockMvc.perform(get("/index"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -34,7 +34,7 @@ class ForumGetMethodTest {
 
     @Test
     @WithMockUser
-    public void GetLoginPageTest() throws Exception {
+    public void getLoginPageTest() throws Exception {
         this.mockMvc.perform(get("/login"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -43,7 +43,7 @@ class ForumGetMethodTest {
 
     @Test
     @WithMockUser
-    public void GetRegPageTest() throws Exception {
+    public void getRegPageTest() throws Exception {
         this.mockMvc.perform(get("/reg"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -52,7 +52,7 @@ class ForumGetMethodTest {
 
     @Test
     @WithMockUser
-    public void GetShowTopicPageTest() throws Exception {
+    public void getShowTopicPageTest() throws Exception {
         this.mockMvc.perform(get("/topic?id=1"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -60,8 +60,8 @@ class ForumGetMethodTest {
     }
 
     @Test
-    @WithMockUser(roles={"MODERATOR"})
-    public void GetUpdatePostPageTest() throws Exception {
+    @WithMockUser(roles = {"MODERATOR"})
+    public void getUpdatePostPageTest() throws Exception {
         this.mockMvc.perform(get("/updatePost?tid=1&pid=1"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -69,8 +69,8 @@ class ForumGetMethodTest {
     }
 
     @Test
-    @WithMockUser(roles={"MODERATOR"})
-    public void GetDeletePostTest() throws Exception {
+    @WithMockUser(roles = {"MODERATOR"})
+    public void getDeletePostTest() throws Exception {
         this.mockMvc.perform(get("/deletePost?tid=1&pid=1"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
@@ -78,8 +78,8 @@ class ForumGetMethodTest {
     }
 
     @Test
-    @WithMockUser(roles={"USER", "MODERATOR"})
-    public void GetCreateTopicPageTest() throws Exception {
+    @WithMockUser(roles = {"USER", "MODERATOR"})
+    public void getCreateTopicPageTest() throws Exception {
         this.mockMvc.perform(get("/createTopic"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -87,8 +87,8 @@ class ForumGetMethodTest {
     }
 
     @Test
-    @WithMockUser(roles={"MODERATOR"})
-    public void GetUpdateTopicPageTest() throws Exception {
+    @WithMockUser(roles = {"MODERATOR"})
+    public void getUpdateTopicPageTest() throws Exception {
         this.mockMvc.perform(get("/updateTopic?id=1"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -96,8 +96,8 @@ class ForumGetMethodTest {
     }
 
     @Test
-    @WithMockUser(roles={"MODERATOR"})
-    public void GetDeleteTopicTest() throws Exception {
+    @WithMockUser(roles = {"MODERATOR"})
+    public void getDeleteTopicTest() throws Exception {
         this.mockMvc.perform(get("/deleteTopic?id=1"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())

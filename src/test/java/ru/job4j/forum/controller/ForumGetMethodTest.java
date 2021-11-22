@@ -1,23 +1,25 @@
 package ru.job4j.forum.controller;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+import ru.job4j.forum.Main;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import org.junit.jupiter.api.Test;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
-import ru.job4j.forum.Main;
-
 @Transactional
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class ForumGetMethodTest {
 
     @Autowired
@@ -70,6 +72,7 @@ class ForumGetMethodTest {
 
     @Test
     @WithMockUser(roles = {"MODERATOR"})
+    @Sql("classpath:test-data.sql")
     public void getDeletePostTest() throws Exception {
         this.mockMvc.perform(get("/deletePost?tid=1&pid=1"))
                 .andDo(print())

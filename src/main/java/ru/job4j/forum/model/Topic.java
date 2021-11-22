@@ -24,6 +24,7 @@ public class Topic {
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )
+    @OrderBy("id ASC")
     private List<Post> posts = new ArrayList<>();
 
     public static Topic of(int id, String name, String description, User author) {

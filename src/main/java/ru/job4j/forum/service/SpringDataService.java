@@ -61,9 +61,9 @@ public class SpringDataService implements ForumService {
             foundTopic.addPost(post);
         } else {
             List<Post> posts = foundTopic.getPosts();
-            for (Post p : posts) {
-                if (p.getId() == post.getId()) {
-                    posts.set(posts.indexOf(p), post);
+            for (int i = 0; i < posts.size(); i++) {
+                if (posts.get(i).getId() == post.getId()) {
+                    posts.set(i, post);
                     break;
                 }
             }
@@ -80,9 +80,9 @@ public class SpringDataService implements ForumService {
     public void deletePostByTopicIdAndPostId(int topicId, int postId) {
         Topic foundTopic = topicRepository.findTopicById(topicId);
         List<Post> posts = foundTopic.getPosts();
-        for (Post post : posts) {
-            if (post.getId() == postId) {
-                posts.remove(post);
+        for (int i = 0; i < posts.size(); i++) {
+            if (posts.get(i).getId() == postId) {
+                posts.remove(i);
                 break;
             }
         }

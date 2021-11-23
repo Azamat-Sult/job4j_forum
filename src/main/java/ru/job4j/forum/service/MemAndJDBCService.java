@@ -1,6 +1,7 @@
 package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
+import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.Topic;
 import ru.job4j.forum.model.User;
@@ -38,8 +39,18 @@ public class MemAndJDBCService implements ForumService {
     }
 
     @Override
+    public void saveUser(User user) {
+
+    }
+
+    @Override
     public User getUserByUserName(String userName) {
         return store.getUserByUserName(userName);
+    }
+
+    @Override
+    public Authority findAuthorityByName(String nameOfAuthority) {
+        return null;
     }
 
     @Override

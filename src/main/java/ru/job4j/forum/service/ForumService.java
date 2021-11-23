@@ -1,5 +1,6 @@
 package ru.job4j.forum.service;
 
+import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.Topic;
 import ru.job4j.forum.model.User;
@@ -16,7 +17,11 @@ public interface ForumService {
 
     void deleteTopicById(int id);
 
+    void saveUser(User user);
+
     User getUserByUserName(String userName);
+
+    Authority findAuthorityByName(String nameOfAuthority);
 
     void savePost(int topicId, Post post);
 

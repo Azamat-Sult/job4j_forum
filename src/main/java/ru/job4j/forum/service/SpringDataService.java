@@ -3,9 +3,11 @@ package ru.job4j.forum.service;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.Topic;
 import ru.job4j.forum.model.User;
+import ru.job4j.forum.repository.AuthorityRepository;
 import ru.job4j.forum.repository.PostRepository;
 import ru.job4j.forum.repository.TopicRepository;
 import ru.job4j.forum.repository.UserRepository;
@@ -19,13 +21,16 @@ public class SpringDataService implements ForumService {
     private TopicRepository topicRepository;
     private PostRepository postRepository;
     private UserRepository userRepository;
+    private AuthorityRepository authorityRepository;
 
     public SpringDataService(TopicRepository topicRepository,
                              PostRepository postRepository,
-                             UserRepository userRepository) {
+                             UserRepository userRepository,
+                             AuthorityRepository authorityRepository) {
         this.topicRepository = topicRepository;
         this.postRepository = postRepository;
         this.userRepository = userRepository;
+        this.authorityRepository = authorityRepository;
     }
 
     @Override
@@ -50,8 +55,18 @@ public class SpringDataService implements ForumService {
     }
 
     @Override
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
     public User getUserByUserName(String userName) {
         return userRepository.findByUsername(userName);
+    }
+
+    @Override
+    public Authority findAuthorityByName(String nameOfAuthority) {
+        return authorityRepository.findByAuthority(nameOfAuthority);
     }
 
     @Override

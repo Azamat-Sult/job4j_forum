@@ -72,7 +72,6 @@ class ForumGetMethodTest {
 
     @Test
     @WithMockUser(roles = {"MODERATOR"})
-    @Sql("classpath:test-data.sql")
     public void getDeletePostTest() throws Exception {
         this.mockMvc.perform(get("/deletePost?tid=1&pid=1"))
                 .andDo(print())

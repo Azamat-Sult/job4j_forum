@@ -2,7 +2,7 @@ INSERT INTO authorities (authority) VALUES ('ROLE_MODERATOR');
 INSERT INTO authorities (authority) VALUES ('ROLE_USER');
 
 INSERT INTO users (username, enabled, password, authority_id)
-VALUES ('admin', true, '$2a$10$YBaEs/51Df1U1/MSUO/gPexO3wNK6JUYCpyifiRMwi67R8SO0XAY6',
+VALUES ('admin', true, '$2a$10$FqmmoBd9XHGDoQbI4t1lZOUsCJqvUNWz7IhB.KV6hHxqUJSl9tVwe',
 (select id from authorities where authority = 'ROLE_MODERATOR'));
 
 INSERT INTO topics (name, description, created, author_id) VALUES ('О чем и для чего этот форум?',
